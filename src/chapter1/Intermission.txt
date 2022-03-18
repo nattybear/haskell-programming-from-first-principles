@@ -1,0 +1,16 @@
+Intermission: Equivalence exercises
+
+1. λxy.xz
+  a) λxz.xz
+v b) λmn.mz
+  c) λz.(λx.xz)
+
+2. λxy.xxy
+  a) λmn.mnp
+  b) λx.(λy.xy)
+v c) λa.(λb.aab)
+
+3. λxyz.zx
+  a) λx.(λy.(λz.z))
+v b) λtos.st
+  c) λmnp.mn
