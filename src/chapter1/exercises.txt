@@ -1,0 +1,74 @@
+Combinators
+
+1. λ.x.xxx      combinators
+
+2. λxy.zx       not combinators
+
+3. λxyz.xy(zx)  combinators
+
+4. λxyz.xy(zxy) combinators
+
+5. λxy.xy(zxy)  not combinators
+
+
+Normal form or diverge?
+
+1. λx.xxx         normal form
+
+2. (λz.zz)(λy.yy) diverge
+
+3. (λx.xxx)z      normal form
+
+
+Beta reduce
+
+1. (λabc.cba)zz(λwv.w)
+
+(λa.λb.λc.cba)zz(λw.λv.w)
+(λb.λc.cbz)z(λw.λv.w)
+(λc.czz)(λw.λv.w)
+(λw.λv.w)zz
+(λv.z)z
+z
+
+2. (λx.λy.xyy)(λa.a)b
+
+(λy.(λa.a)yy)b
+(λa.a)bb
+bb
+
+3. (λy.y)(λx.xx)(λz.zq)
+
+(λx.xx)(λz.zq)
+(λz.zq)(λz.zq)
+(λz.zq)q
+qq
+
+4. (λz.z)(λz.zz)(λz.zy)
+
+(λa.a)(λb.bb)(λc.cy)
+(λb.bb)(λc.cy)
+(λc.cy)(λc.cy)
+(λc.cy)y
+yy
+
+5. (λx.λy.xyy)(λy.y)y
+
+(λx.λy.xyy)(λz.z)y
+(λy.(λz.z)yy)y
+(λz.z)yy
+yy
+
+6. (λa.aa)(λb.ba)c
+
+(λb.ba)(λb.ba)c
+((λb.ba)a)c
+aac
+
+7. (λxyz.xz(yz))(λx.z)(λx.a)
+
+(λx.λy.λz.xz(yz))(λx.z)(λx.a)
+(λy.λz1.(λx.z)z1(yz1))(λx.a)
+λz1.(λx.z)z1((λx.a)z1)
+λz1.z((λx.a)z1)
+λz1.za
