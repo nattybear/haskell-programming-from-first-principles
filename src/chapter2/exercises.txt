@@ -1,0 +1,44 @@
+Exercises: parentheses and association
+
+1.  a) 8 + 7 * 9
+    b) (8 + 7) * 9
+
+change
+
+2.  a) perimeter x y = (x * 2) + (y * 2)
+    b) perimeter x y = x * 2 + y * 2
+
+not change
+
+3.  a) f x = x / 2 + 9
+    b) f x = x / (2 + 9)
+
+change
+
+Exercises: Heal the sick
+
+1. area x = 3.14 * (x * x)
+
+2. double x = x * 2
+
+3. x = 7
+   y = 10
+   f = x + y
+
+Exercises: A head code
+
+1. let x = 5 in x
+
+5
+
+2. let x = 5 in x * x
+
+25
+
+3. let x = 5; y = 6 in x * y
+
+30
+
+4. let x = 3; y = 1000 in x + 3
+
+6
