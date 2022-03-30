@@ -4,3 +4,5 @@ waxOn = x * 5
         x = y ^ 2
 
 triple x = x * 3
+
+waxOff x = triple x
