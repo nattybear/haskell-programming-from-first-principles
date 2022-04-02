@@ -1,0 +1,11 @@
+Exercises: Mood swing
+
+data Mood = Blah | Woot deriving Show
+
+1. Mood
+2. Blah or Woot
+3. Woot is term level, not type level
+4.
+
+changeMood Blah = Woot
+changeMood    _ = Blah
