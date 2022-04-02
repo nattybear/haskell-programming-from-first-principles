@@ -1,0 +1,86 @@
+1.
+
+length :: [a] -> Int
+
+2. What are the results of the following expressions?
+
+  a) length [1, 2, 3, 4, 5] == 5
+  b) length [(1, 2), (2, 3), (3, 4)] == 3
+  c) length allAwesome == 2
+  d) length (concat allAwesome) == 5
+
+3. Which will return an error and why?
+
+  6 / 3
+v 6 / length [1, 2, 3]
+
+type of `length [1, 2, 3]` is Int but (/) needs Fractional
+
+4.
+
+6 / fromIntegral (length [1, 2, 3])
+
+5. What is the type of the expression 2 + 3 == 5? What would we
+   expect as a result?
+
+   The type of the expression 2 + 3 == 5 is Bool.
+   We would expect it True as a result.
+
+6. What is the type and expected result value of the following:
+
+  a) x = 5
+  b) x + 3 == 5
+
+  False :: Bool
+
+7. Below are some bits of code. Which will work? Why or why not?
+   If they will work, what values would these reduce to?
+
+   a) length allAwesome == 2              -- work, True
+   b) length [1, 'a', 3, 'b']             -- not work, type should be same
+   c) length allAwesome + length awesome  -- work, 5
+   d) (8 == 8) && ('b' < 'a')             -- work, False
+   e) (8 == 8) && 9                       -- not work, 9 is not Bool
+
+Correcting syntax
+
+1.
+
+x = (+)
+
+f xs = w `x` 1
+  where w = length xs
+
+
+2. \x -> x
+
+3. f (a, b) = a
+
+Match the function names to their types
+
+1. Which of the following types is the type of show?
+
+  a) show a => a -> String
+  b) Show a -> a -> String
+v c) Show a => a -> String
+
+2. Which of the following types is the type of ==?
+
+  a) a -> a -> Bool
+v b) Eq a => a -> a -> Bool
+  c) Eq a -> a -> a -> bool
+  d) Eq a => A -> Bool
+
+3. Which of the following types is the type of fst?
+
+v a) (a, b) -> a
+  b) b -> a
+  c) (a, b) -> b
+
+4. Which of the following types is the type of +?
+
+  a) Num a -> a -> a -> Bool
+  b) Num a => a -> a -> Bool
+  c) num a => a -> a -> a
+v d) Num a => a -> a -> a
+  e) a -> a -> a
