@@ -108,3 +108,28 @@ myCom :: Int -> Bool
 5. myAlph x = x < 'z'
 
 myAlph :: Char
+
+Does it compile?
+
+1. bigNum = (^) 5 $ 10  -- 5 ^ 10
+   wahoo = bigNum $ 10
+
+   It does not compile, bigNum is not a function.
+
+2. x = print
+   y = print "woohoo!"
+   z = x "hello world"
+
+   It compile.
+
+3. a = (+)
+   b = 5
+   c = b 10
+   d = c 200
+
+   It does not compile, b is not a function.
+
+4. a = 12 + b
+   b = 10000 * c
+
+   It does not compile, b and c is not define.
