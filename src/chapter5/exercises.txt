@@ -133,3 +133,25 @@ Does it compile?
    b = 10000 * c
 
    It does not compile, b and c is not define.
+
+Type variable or specific type constructor?
+
+1. f   :: Num a => a -> b -> Int -> Int
+   a   :: constrained polymorphic
+   b   :: fully polymorphic
+   Int :: concrete
+
+2. f    :: zed -> Zed -> Blah
+   zed  :: fully polymorphic
+   Zed  :: concrete
+   Blah :: concrete
+
+3. f :: Enum b => a -> b -> C
+   a :: fully polymorphic
+   b :: constrained polymorphic
+   C :: concrete
+
+4. f :: f -> g -> C
+   f :: fully polymorphic
+   g :: fully polymorphic
+   C :: concrete
