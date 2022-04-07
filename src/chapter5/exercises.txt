@@ -86,3 +86,25 @@ Exercises: Type arguments
  v c) Integer
    d) (Num a, Ord a) => a
    e) a
+
+Exercises: Apply yourself
+
+1. myConcat x = x ++ " yo"
+
+myConcat :: String -> String
+
+2. myMult x = (x / 3) * 5
+
+myMult :: Fractional a => a -> a
+
+3. myTake x = take x "hey you"
+
+myTake :: Int -> String
+
+4. myCom x = x > (length [1..10])
+
+myCom :: Int -> Bool
+
+5. myAlph x = x < 'z'
+
+myAlph :: Char
