@@ -13,3 +13,9 @@ instance Eq DayOfWeek where
   (==) Sat Sat   = True
   (==) Sun Sun   = True
   (==) _ _       = False
+
+instance Eq Date where
+  (==) (Date weekday dayOfMonth)
+       (Date weekday' dayOfMonth') =
+       weekday == weekday'
+    && dayOfMonth == dayOfMonth'
