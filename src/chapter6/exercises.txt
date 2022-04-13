@@ -1,0 +1,18 @@
+Exercises: Will they work?
+
+1. max (length [1, 2, 3])
+       (length [8, 9, 10, 11, 12])
+
+   It returns 5.
+
+2. compare (3 * 4) (3 * 5)
+
+   It returns LT.
+
+3. compare "Julie" True
+
+   It does not work. They are not same type.
+
+4. (5 + 3) > (3 + 6)
+
+   It returns False.
