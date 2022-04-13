@@ -1,5 +1,6 @@
 data DayOfWeek =
   Mon | Tue | Weds | Thu | Fri | Sat | Sun
+  deriving (Show)
 
 data Date =
   Date DayOfWeek Int
@@ -19,3 +20,9 @@ instance Eq Date where
        (Date weekday' dayOfMonth') =
        weekday == weekday'
     && dayOfMonth == dayOfMonth'
+
+instance Ord DayOfWeek where
+  compare Fri Fri = EQ
+  compare Fri _   = GT
+  compare _   Fri = LT
+  compare _   _   = EQ
