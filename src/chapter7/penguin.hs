@@ -25,3 +25,9 @@ gimmeWhereTheyLive :: Penguin
                    -> WherePenguinsLive
 gimmeWhereTheyLive (Peng whereitlives) =
   whereitlives
+
+humboldt = Peng SouthAmerica
+gentoo = Peng Antarctica
+macaroni = Peng Antarctica
+little = Peng Australia
+galapagos = Peng Galapagos
