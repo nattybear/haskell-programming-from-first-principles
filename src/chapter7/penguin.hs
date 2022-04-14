@@ -9,3 +9,10 @@ data WherePenguinsLive =
 data Penguin =
   Peng WherePenguinsLive
   deriving (Eq, Show)
+
+isSouthAfrica :: WherePenguinsLive -> Bool
+isSouthAfrica SouthAfrica  = True
+isSouthAfrica Galapagos    = False
+isSouthAfrica Antarctica   = False
+isSouthAfrica Australia    = False
+isSouthAfrica SouthAmerica = False
