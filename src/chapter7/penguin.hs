@@ -5,3 +5,7 @@ data WherePenguinsLive =
   | SouthAfrica
   | SouthAmerica
   deriving (Eq, Show)
+
+data Penguin =
+  Peng WherePenguinsLive
+  deriving (Eq, Show)
