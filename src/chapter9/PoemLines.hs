@@ -1,4 +1,4 @@
-module PoemLines where
+module PoemLines (split) where
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"
@@ -7,12 +7,15 @@ fourthSen = "Could frame thy fearful\
            \ symmetry?"
 sentences = firstSen ++ secondSen ++ thirdSen ++ fourthSen
 
+split :: Char -> String -> [String]
+split _ "" = []
+split c s = piece : split c (drop 1 rest)
+  where piece = takeWhile pred s
+        rest = dropWhile pred s
+        pred = (/= c)
+
 myLines :: String -> [String]
-myLines "" = []
-myLines s = line : myLines (drop 1 rest)
-  where line = takeWhile newline s
-        rest = dropWhile newline s
-        newline = (/= '\n')
+myLines = split '\n'
 
 shouldEqual =
   [ "Tyger Tyger, burning bright"
