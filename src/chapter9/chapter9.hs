@@ -4,9 +4,7 @@ myWords :: String -> [String]
 myWords = split ' '
 
 zip' :: [a] -> [b] -> [(a, b)]
-zip' _      []     = []
-zip' []     _      = []
-zip' (x:xs) (y:ys) = (x, y) : zip' xs ys
+zip' = zipWith' (,)
 
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
 zipWith' _ []     _      = []
