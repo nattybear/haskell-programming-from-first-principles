@@ -36,4 +36,4 @@ capitalize' (x:xs) = toUpper x : capitalize' xs
 -- 5. head :: [a] -> a
 
 headFirst :: String -> Char
-headFirst s = toUpper . head $ s
+headFirst = toUpper . head
