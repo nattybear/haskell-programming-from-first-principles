@@ -79,3 +79,9 @@ myMinimumBy f (x:x':xs) = case f x x' of
   LT -> myMinimumBy f (x :xs)
   EQ -> myMinimumBy f (x':xs)
   GT -> myMinimumBy f (x':xs)
+
+myMaximum :: (Ord a) => [a] -> a
+myMaximum = myMaximumBy compare
+
+myMinimum :: (Ord a) => [a] -> a
+myMinimum = myMinimumBy compare
