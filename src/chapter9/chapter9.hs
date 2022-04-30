@@ -37,3 +37,19 @@ capitalize' (x:xs) = toUpper x : capitalize' xs
 
 headFirst :: String -> Char
 headFirst = toUpper . head
+
+-- Writing your own standard functions
+
+myOr :: [Bool] -> Bool
+myOr [] = False
+myOr (x:xs) = x || myOr xs
+
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny _ [] = False
+myAny f (x:xs) = f x || myAny f xs
+
+myElem :: Eq a => a -> [a] -> Bool
+myElem _ []     = False
+myElem x (y:ys) = if x == y
+                  then True
+                  else myElem x ys
