@@ -72,3 +72,10 @@ myMaximumBy f (x:x':xs) = case f x x' of
   LT -> myMaximumBy f (x':xs)
   EQ -> myMaximumBy f (x':xs)
   GT -> myMaximumBy f (x :xs)
+
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ [x] = x
+myMinimumBy f (x:x':xs) = case f x x' of
+  LT -> myMinimumBy f (x :xs)
+  EQ -> myMinimumBy f (x':xs)
+  GT -> myMinimumBy f (x':xs)
