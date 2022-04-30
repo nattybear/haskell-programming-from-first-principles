@@ -54,3 +54,7 @@ myElem x = any (== x)
 myReverse :: [a] -> [a]
 myReverse []     = []
 myReverse (x:xs) = myReverse xs ++ [x]
+
+squish :: [[a]] -> [a]
+squish [] = []
+squish (xs:xxs) = xs ++ squish xxs
