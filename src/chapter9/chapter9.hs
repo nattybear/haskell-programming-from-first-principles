@@ -62,3 +62,6 @@ squish (xs:xxs) = xs ++ squish xxs
 squishMap :: (a -> [b]) -> [a] -> [b]
 squishMap _ [] = []
 squishMap f xs = squish (map f xs)
+
+squishAgain :: [[a]] -> [a]
+squishAgain = squishMap id
