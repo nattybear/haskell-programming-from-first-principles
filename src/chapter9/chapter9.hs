@@ -65,3 +65,10 @@ squishMap f xs = squish (map f xs)
 
 squishAgain :: [[a]] -> [a]
 squishAgain = squishMap id
+
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy _ [x] = x
+myMaximumBy f (x:x':xs) = case f x x' of
+  LT -> myMaximumBy f (x':xs)
+  EQ -> myMaximumBy f (x':xs)
+  GT -> myMaximumBy f (x :xs)
