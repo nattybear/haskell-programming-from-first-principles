@@ -50,3 +50,7 @@ myAny f (x:xs) = f x || myAny f xs
 
 myElem :: Eq a => a -> [a] -> Bool
 myElem x = any (== x)
+
+myReverse :: [a] -> [a]
+myReverse []     = []
+myReverse (x:xs) = myReverse xs ++ [x]
