@@ -7,7 +7,7 @@ verbs = ["bite", "hug"]
 foo :: [(String, String, String)]
 foo = [(a,b,c) | a <- nouns, b <- verbs, c <- nouns]
 
-seekritFunc :: String -> Int
+seekritFunc :: String -> Double
 seekritFunc x =
-  div (sum (map length (words x)))
-      (length (words x))
+  (/) (fromIntegral (sum (map length (words x))))
+      (fromIntegral (length (words x)))
