@@ -1,3 +1,5 @@
+{-# LANGUAGE LambdaCase #-}
+
 isJust :: Maybe a -> Bool
 isJust Nothing  = False
 isJust (Just _) = True
@@ -22,4 +24,9 @@ maybeToList Nothing  = []
 maybeToList (Just x) = [x]
 
 catMaybes :: [Maybe a] -> [a]
-catMaybes = undefined
+catMaybes = map (\case Just x -> x) . filter isJust
+
+flipMaybe :: [Maybe a] -> Maybe [a]
+flipMaybe xs = if any isNothing xs
+               then Nothing
+               else Just (catMaybes xs)
