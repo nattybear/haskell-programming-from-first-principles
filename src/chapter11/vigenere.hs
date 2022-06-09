@@ -1,9 +1,12 @@
 import Chapter9.Cipher
 import Data.Char
 
-vigenere :: String -> String -> String
-vigenere message keyword = map shift pairs
-  where pairs = myZip message keyword
+vigenere :: IO String
+vigenere = do
+  message <- getLine
+  keyword <- getLine
+  let pairs = myZip message keyword
+  return $ map shift pairs
 
 shift :: (Char,Char) -> Char
 shift (x,y) = caesar y' x
