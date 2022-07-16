@@ -1,4 +1,5 @@
 import Data.Monoid
+import Test.QuickCheck
 
 data Optional a = Nada
                 | Only a
