@@ -1,5 +1,6 @@
 module Three where
 
+import Data.Monoid
 import Test.QuickCheck
 import Test.QuickCheck.Checkers
 import Test.QuickCheck.Classes
@@ -37,5 +38,35 @@ type SSI = (String,String,Int)
 trigger :: Three String String SSI
 trigger = undefined
 
+data Three' a b
+  = Three' a b b
+  deriving (Eq, Show)
+
+instance (Arbitrary a, Arbitrary b)
+       => Arbitrary (Three' a b) where
+  arbitrary = Three' <$> arbitrary
+                     <*> arbitrary
+                     <*> arbitrary
+
+instance (Eq a, Eq b)
+       => EqProp (Three' a b) where
+  (=-=) = eq
+
+instance Functor (Three' a) where
+  fmap f (Three' x y1 y2)
+    = Three' x (f y1) (f y2)
+
+instance Monoid a
+      => Applicative (Three' a) where
+  pure x = Three' mempty x x
+
+  Three' m f g <*> Three' n x y
+    = Three' (m <> n) (f x) (g y)
+
+trigger' :: Three' String SSI
+trigger' = undefined
+
 main :: IO ()
-main = quickBatch (applicative trigger)
+main = do
+  -- quickBatch (applicative trigger)
+  quickBatch (applicative trigger')
