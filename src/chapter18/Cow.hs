@@ -44,3 +44,26 @@ mkSphericalCow name' age' weight'
               Just weighty ->
                 weightCheck
                   (Cow nammy agey weighty)
+
+mkSphericalCow' :: String
+                -> Int
+                -> Int
+                -> Maybe Cow
+mkSphericalCow' name' age' weight' = do
+  nammy   <- noEmpty name'
+  agey    <- noNegative age'
+  weighty <- noNegative weight'
+  weightCheck (Cow nammy agey weighty)
+
+mkSphericalCow'' :: String
+                 -> Int
+                 -> Int
+                 -> Maybe Cow
+mkSphericalCow'' name' age' weight'
+  = noEmpty name' >>=
+    \nammy ->
+      noNegative age' >>=
+      \agey ->
+        noNegative weight' >>=
+        \weighty ->
+          weightCheck (Cow nammy agey weighty)
