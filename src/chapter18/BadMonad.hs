@@ -10,7 +10,7 @@ data CountMe a =
 
 instance Functor CountMe where
   fmap f (CountMe i a) =
-    CountMe (i + 1) (f a)
+    CountMe i (f a)
 
 instance Applicative CountMe where
   pure = CountMe 0
@@ -21,8 +21,8 @@ instance Monad CountMe where
   return = pure
 
   CountMe n a >>= f =
-    let CountMe _ b = f a
-    in  CountMe (n + 1) b
+    let CountMe n' b = f a
+    in  CountMe (n + n') b
 
 instance Arbitrary a
       => Arbitrary (CountMe a) where
