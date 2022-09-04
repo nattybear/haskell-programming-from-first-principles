@@ -82,25 +82,14 @@ fromMaybe _ (Just x) = x
 -- >>> fromMaybe 0 zs
 -- 0
 
+sequA :: Integral a => a -> [Bool]
+sequA m = sequenceA [(>3), (<8), even] m
+
+-- Just 15
+s' = summed <$> ((,) <$> xs <*> ys)
+
 main :: IO ()
 main = do
-  print $
-    sequenceA [Just 3, Just 2, Just 1]
-
-  print $ sequenceA [x, y]
-  print $ sequenceA [xs, ys]
-  print $ summed <$> ((,) <$> xs <*> ys)
-  print $ fmap summed ((,) <$> xs <*> zs)
-  print $ bolt 7
-  print $ fmap bolt z
-  print $ sequenceA [(>3), (<8), even] 7
-
--- |
--- >>> main
--- Just [3,2,1]
--- [[1,4],[1,5],[1,6],[2,4],[2,5],[2,6],[3,4],[3,5],[3,6]]
--- Just [6,9]
--- Just 15
--- Nothing
--- True
--- [True,False,False]
+  print $ foldr (&&) False (sequA 7)
+  print $ sequA (fromMaybe 0 s')
+  print $ bolt (fromMaybe 0 ys)
