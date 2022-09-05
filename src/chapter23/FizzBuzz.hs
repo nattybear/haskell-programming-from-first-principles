@@ -22,6 +22,19 @@ addResult n = do
   let result = fizzBuzz n
   put (DL.snoc xs result)
 
+addResult' :: Integer -> State [String] ()
+addResult' n = do
+  xs <- get
+  let result = fizzBuzz n
+  put (result : xs)
+
+fizzbuzzFromTo :: Integer
+               -> Integer
+               -> [String]
+fizzbuzzFromTo start end =
+  execState (mapM_ addResult' [end,end-1..start]) []
+
 main :: IO ()
 main =
-  mapM_ putStrLn $ fizzbuzzList [1..100]
+  -- mapM_ putStrLn $ fizzbuzzList [1..100]
+  mapM_ putStrLn $ fizzbuzzFromTo 1 100
