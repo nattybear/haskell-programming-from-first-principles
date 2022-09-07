@@ -53,18 +53,14 @@ main = do
 -- Success 123
 
 p123 :: String -> IO ()
-p123 s = putStrLn $
-  case go "123" of
-    Success x -> "Success " <> x
-    Failure _ ->
-      case go "12" of
-        Success x -> "Success " <> x
-        Failure _ ->
-          case go "1" of
-            Success x -> "Success " <> x
-            Failure e -> "Failure " <> show e
-  where
-    go t = parseString (string t) mempty s
+p123 s =
+  print $ parseString p123' mempty s
+
+p123' :: Parser String
+p123' =
+      string "123"
+  <|> string "12"
+  <|> string "1"
 
 string' :: String -> Parser String
 string' "" = return ""
