@@ -14,14 +14,18 @@ eitherOr = [r|
 123
 abc
 456
-def|]
+def
+|]
 
 parseNos :: Parser NumberOrString
-parseNos = 
+parseNos = do
   skipMany (oneOf "\n")
-  >>
-      (Left  <$> integer)
-  <|> (Right <$> some letter)
+
+  v <-     (Left  <$> integer)
+       <|> (Right <$> some letter)
+
+  skipMany (oneOf "\n")
+  return v
 
 main = do
   let p f i = parseString f mempty i
