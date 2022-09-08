@@ -18,15 +18,16 @@ def
 |]
 
 parseNos :: Parser NumberOrString
-parseNos = do
+parseNos =
   skipMany (oneOf "\n")
-
-  v <-     (Left  <$> integer)
-       <|> (Right <$> some letter)
-
-  skipMany (oneOf "\n")
-  return v
+  >>
+      (Left  <$> integer)
+  <|> (Right <$> some letter)
 
 main = do
   let p f i = parseString f mempty i
   print $ p parseNos eitherOr
+
+-- |
+-- >>> parseString (some (token parseNos)) mempty eitherOr
+-- Success [Left 123,Right "abc",Left 456,Right "def"]
