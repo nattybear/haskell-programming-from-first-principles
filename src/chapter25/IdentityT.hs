@@ -2,6 +2,8 @@
 
 module IdentityT where
 
+import Control.Monad
+
 newtype IdentityT f a =
   IdentityT { runIdentityT :: f a }
   deriving (Eq, Show)
@@ -21,4 +23,16 @@ instance Applicative m =>
   (<*>) :: IdentityT m (a -> b)
         -> IdentityT m a
         -> IdentityT m b
-  IdentityT f <*> IdentityT a = undefined
+  IdentityT f <*> IdentityT a =
+    IdentityT $ f <*> a
+
+instance Monad m =>
+         Monad (IdentityT m) where
+  return :: a -> IdentityT m a
+  return = pure
+
+  (>>=) :: IdentityT m a
+        -> (a -> IdentityT m b)
+        -> IdentityT m b
+  IdentityT ma >>= f =
+    IdentityT $ join $ (runIdentityT . f) <$> ma
