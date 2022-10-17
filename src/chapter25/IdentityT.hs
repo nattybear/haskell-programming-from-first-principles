@@ -35,4 +35,4 @@ instance Monad m =>
         -> (a -> IdentityT m b)
         -> IdentityT m b
   IdentityT ma >>= f =
-    IdentityT $ join $ (runIdentityT . f) <$> ma
+    IdentityT $ ma >>= runIdentityT . f
