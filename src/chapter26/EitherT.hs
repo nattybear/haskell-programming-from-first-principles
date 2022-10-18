@@ -42,3 +42,20 @@ instance Monad m =>
 swapEither :: Either a b -> Either b a
 swapEither (Left x)  = Right x
 swapEither (Right x) = Left x
+
+swapEitherT :: Functor m
+            => EitherT e m a
+            -> EitherT a m e
+swapEitherT (EitherT x) =
+  EitherT $ swapEither <$> x
+
+eitherT :: Monad m
+        => (a -> m c)
+        -> (b -> m c)
+        -> EitherT a m b
+        -> m c
+eitherT f g (EitherT mx) = do
+  v <- mx
+  case v of
+    Left x -> f x
+    Right y -> g y
