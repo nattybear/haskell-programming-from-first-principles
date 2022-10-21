@@ -24,13 +24,10 @@ instance Monad m =>
         -> StateT s m a
         -> StateT s m b
   StateT smfs <*> StateT smas =
-    StateT $ \s ->
-      let mfs = smfs s
-      in  do
-        (f, s') <- mfs
-        let mas = smas s'
-        (a, s'') <- mas
-        return (f a, s'')
+    StateT $ \s -> do
+      (f, s') <- smfs s
+      (a, s'') <- smas s'
+      return (f a, s'')
 
 instance Monad m =>
          Monad (StateT s m) where
@@ -43,5 +40,4 @@ instance Monad m =>
   StateT smas >>= f =
     StateT $ \s -> do
       (a, s') <- smas s
-      let smbs = runStateT (f a)
-      smbs s'
+      runStateT (f a) s'
