@@ -21,10 +21,10 @@ readerUnwrap :: () -> IO (Either String (Maybe Int))
 readerUnwrap = runReaderT eitherUnwrap
 
 foo :: ReaderT () IO (Either String (Maybe Int))
-foo = ReaderT $ \() -> return (Right (Just 1))
+foo = ReaderT $ return <$> const (Right (Just 1))
 
 bar :: ExceptT String (ReaderT () IO) (Maybe Int)
-bar = ExceptT $ return (Right (Just 1))
+bar = ExceptT $ ReaderT $ return <$> const (Right (Just 1))
 
 baz :: MaybeT (ExceptT String (ReaderT () IO)) Int
-baz = undefined
+baz = MaybeT $ ExceptT $ ReaderT $ return <$> const (Right (Just 1))
