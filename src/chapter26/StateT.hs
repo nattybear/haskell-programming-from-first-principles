@@ -2,8 +2,16 @@
 
 module StateT where
 
+import MonadTrans
+
 newtype StateT s m a =
   StateT { runStateT :: s -> m (a, s) }
+
+instance MonadTrans (StateT s) where
+  lift :: Monad m => m a -> StateT s m a
+  lift m = StateT $ \s -> do
+                      a <- m
+                      return (a, s)
 
 instance Functor m =>
          Functor (StateT s m) where
